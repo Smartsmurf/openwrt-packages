@@ -74,15 +74,15 @@ ifeq ($(CONFIG_SOFT_FLOAT),y)
 	CONFIGURE_ARGS += \
 		--with-cpu=generic_nofpu \
 		--enable-int-quality=yes
+else ifneq ($(findstring aarch64,$(CONFIG_ARCH)),)
+	CONFIGURE_ARGS += \
+		--with-cpu=aarch64
 else ifneq ($(findstring 464fp,$(CONFIG_CPU_TYPE)),)
 	CONFIGURE_ARGS += \
 		--with-cpu=altivec
 else ifneq ($(findstring neon,$(CONFIG_CPU_TYPE)),)
 	CONFIGURE_ARGS += \
 		--with-cpu=arm_fpu
-else ifneq ($(findstring aarch64,$(CONFIG_ARCH)),)
-	CONFIGURE_ARGS += \
-		--with-cpu=aarch64
 else
 	CONFIGURE_ARGS += \
 		--with-cpu=generic_fpu
